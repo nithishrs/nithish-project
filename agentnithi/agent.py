@@ -4,7 +4,7 @@ from google.adk.tools import google_search
 sub1 = Agent(
     model='gemini-2.5-flash',
     name='sub1',
-    description='A helpful assistant for user questions.',
+    description='A helpful assvistant for user questions.',
     instruction='Check if root_agentss answers are correct',
     tools=[google_search]
 )
