@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Social Scheduler</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h1>AI Social Scheduler</h1>
+            <button onclick="logout()" style="width: auto; background: #EF4444;">Logout</button>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Left Column: Content Creation -->
+            <div class="main-content">
+                <div class="card">
+                    <h2>📝 Create Content</h2>
+                    <div class="form-group">
+                        <label>Platform</label>
+                        <select id="platformSelect">
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Twitter">Twitter/X</option>
+                            <option value="Instagram">Instagram</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Draft Content</label>
+                        <textarea id="contentInput" rows="5" placeholder="Write your raw thoughts here..."></textarea>
+                    </div>
+                    <button onclick="optimizeContent()">✨ AI Optimize</button>
+
+                    <div id="optimizationResult" class="hidden">
+                        <div class="result-box">
+                            <h3>Optimized Version (Score: <span id="scoreVal"></span>/10)</h3>
+                            <p id="optimizedText" style="white-space: pre-wrap; font-weight: 500;"></p>
+                            <p id="hashtags" style="color: var(--primary); margin-top: 10px;"></p>
+                            <p id="explanation"
+                                style="font-size: 0.9em; color: gray; margin-top: 10px; font-style: italic;"></p>
+                        </div>
+                        <button onclick="schedulePost()" style="margin-top: 10px; background: #059669;">📅 Schedule This
+                            Post</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📅 Upcoming Schedule</h2>
+                    <div id="scheduleList">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Research & Trends -->
+            <div class="sidebar">
+                <div class="card">
+                    <h2>🕰️ Best Times to Post</h2>
+                    <select id="timePlatform" onchange="researchTiming()">
+                        <option value="LinkedIn">LinkedIn</option>
+                        <option value="Twitter">Twitter</option>
+                        <option value="Instagram">Instagram</option>
+                    </select>
+                    <div id="timingResult" class="result-box hidden">
+                        <ul id="bestTimesList"></ul>
+                        <p id="timingReasoning" style="font-size: 0.8em; margin-top: 5px;"></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📈 Trending Topics</h2>
+                    <button onclick="analyzeTrends()">Refresh Trends</button>
+                    <div id="trendResult" class="result-box hidden">
+                        <ul id="trendList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
